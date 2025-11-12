@@ -1,0 +1,1 @@
+*pVar = pow(x-(*pMean), 2) + pow(y-(*pMean), 2);

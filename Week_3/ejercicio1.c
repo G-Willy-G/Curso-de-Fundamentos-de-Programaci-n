@@ -23,8 +23,5 @@ int main ()
         printf ("El numero introducido es mayor a 99");
     }
     
-    
-
-
     return 0;
 }
