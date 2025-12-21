@@ -1,8 +1,10 @@
 #include <stdio.h>
-int main ()
 
+int main(void)
 {
-    printf("****************\n**** AGENDA ****\n****************");
+    printf("****************\n");
+    printf("**** AGENDA ****\n");
+    printf("****************");
 
-    return 0;
+    return (0);
 }

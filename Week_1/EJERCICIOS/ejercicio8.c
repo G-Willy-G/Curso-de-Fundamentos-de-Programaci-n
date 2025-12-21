@@ -1,11 +1,20 @@
 #include <stdio.h>
-int main () 
 
+int main(void) 
 {
-    short a=30000,b=30000,c;
+    //Declaration of variables
+    short a;
+    short b;
+    short c;
+    
+    //Initialize variables
+    a = 30000;
+    b = 30000;
 
+    //Calculate sum
     c = a + b;
-    printf ("El valor de c es %hd\n",c);
 
-    return 0;
+    //Print result
+    printf ("El valor de c es %hd\n",c);
+    return (0);
 }

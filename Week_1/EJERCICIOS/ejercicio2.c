@@ -1,7 +1,8 @@
 #include <stdio.h>
-int main ()
-{
-    fprintf(stdout, "****************\n**** AGENDA ****\n****************");
 
-    return 0;
+int main(void)
+{
+    printf("****************\n**** AGENDA ****\n****************");
+
+    return (0);
 }

@@ -1,6 +1,8 @@
 #include <stdio.h>
-int main () 
+
+int main(void) 
 {
+    //Declaration of variables
     short variable1 = 0;
     unsigned short variable2 = 0;
     long variable3 = 0;
@@ -11,22 +13,25 @@ int main ()
     double variable8 = 0;
     char variable9 = 0;
 
+    //Input from user
     printf ("\nIntroduce el valor que quieres asignar a short (-32,768 - 32,767): ");
-    scanf ("%hi", variable1);
+    scanf ("%hi", &variable1);
     printf ("\nIntroduce el valor que quieres asignar a unsigned short (0 - 65,535): ");
-    scanf ("\n%hu", variable2);
+    scanf ("\n%hu", &variable2);
     printf ("\nIntroduce el valor que quieres asignar a long (-2,147,483,648 a 2,147,483,647): ");
-    scanf ("\n%ld", variable3);
+    scanf ("\n%ld", &variable3);
     printf ("\nIntroduce el valor que quieres asignar a unsigned long (0 a 4,294,967,295): ");
-    scanf ("\n%lu", variable4);
+    scanf ("\n%lu", &variable4);
     printf ("\nIntroduce el valor que quieres asignar a int (-2,147,483,648 a 2,147,483,647): ");
-    scanf ("\n%d", variable5);
+    scanf ("\n%d", &variable5);
     printf ("\nIntroduce el valor que quieres asignar a unsigned int (0 a 4,294,967,295): ");
-    scanf ("\n%u", variable6);
+    scanf ("\n%u", &variable6);
     printf ("\nIntroduce el valor que quieres asignar a float (1.2e-38 a 3.4e+38): ");
-    scanf ("\n%f", variable7);
+    scanf ("\n%f", &variable7);
     printf ("\nIntroduce el valor que quieres asignar a double (2.3e-308 a 1.7e+308: ");
-    scanf ("\n%lf", variable8);
+    scanf ("\n%lf", &variable8);
+    printf ("Introduce el valor que quieres asignar a char: ");
+    scanf ("%c", &variable9);
 
     printf ("-------------------------------------------------");
     printf ("\nEsta es la variable short que admite numeros negativos (%hi) \ny este el valor de la variable short que no admite signo (%hu)\n", variable1, variable2);
