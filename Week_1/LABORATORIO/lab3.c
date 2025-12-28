@@ -1,16 +1,20 @@
 #include <stdio.h>
-int main (){
 
-    int numero=0;
-    char caracter;
+int main (void)
+{
+    long    edad;
+    double    altura;
+    char    inicial;
 
-    printf ("Por favor, introduce un numero (entre 1 y 5): ");
-    scanf ("%d", &numero);
+    printf ("Introduce la altura: ");
+    scanf ("%lf", &altura);
 
-    printf ("Por favor, introduce un caracter: ");
-    scanf ("\n%c", &caracter);
+    printf ("Introduce el edad: ");
+    scanf ("%ld", &edad);
+    
+    printf ("Introduce la inicial: ");
+    scanf (" %c", &inicial);
 
-    printf ("The character '%c' with ASCII code %d, if it is encrypted with the number %d, would become the character '%c' with the ASCII code %d\n", caracter, caracter, numero, caracter + numero, caracter + numero);
-
-    return 0;
+    printf ("El peso ideal de %c, el cual mide %.1lf cm y tiene %ld anos, es %.3lf", inicial, altura, edad, (altura - 100 + (9 * (double) edad) / 100));
+    return (0);
 }

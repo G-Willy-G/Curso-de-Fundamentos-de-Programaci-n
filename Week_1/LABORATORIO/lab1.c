@@ -1,25 +1,15 @@
 #include <stdio.h>
-int main () {
 
-    double weight[2], height[2];
-    char initials[2];
+int main(void)
+{
+    char caracteres[2];
 
-    printf ("Please enter the initial of the first person: ");
-    scanf ("\n%c", &initials[0]);
-    printf ("Please enter the height of the first person (in centimeters): ");
-    scanf ("%lf", &height[0]);
+    printf("Introduce un primer caracter: ");
+    scanf("%s", &caracteres[0]);
 
-    printf ("Please enter the initial of the sencond person: ");
-    scanf ("\n%c", &initials[1]);
-    printf ("Please enter the height of the second person (in centimeters): ");
-    scanf ("%lf", &height[1]);
+    printf("Introduce el primer caracter: ");
+    scanf("%s", &caracteres[1]);
 
-    weight[0]= height[0] - 100 - ((height[0] - 150) / 4);
-    weight[1]= height[1] - 100 - ((height[1] - 150) / 4);
-
-    printf ("The ideal weight of %c is %.1lf kg", initials[0], weight[0]);
-    printf ("\nThe ideal weight of %c is %.1lf kg", initials[1], weight[1]);
-    printf ("\nThe average of both ideal weights is %.1lf kg", (weight[0]+weight[1])/2);
-
+    printf("Si anadimos el codigo ASCII del caracter %s que es %d con el codigo ASCII del caracter %s que es %d, obtenemos la suma de %d", caracteres[0], caracteres[0], caracteres[1], caracteres[1], caracteres[0] + caracteres[1]);
     return 0;
 }

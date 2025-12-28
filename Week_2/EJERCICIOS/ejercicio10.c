@@ -1,22 +1,54 @@
 #include <stdio.h>
-int main ()
+
+int main(void)
 {
+    long    a;  // First number
+    long    b;  // Second number
+    long    c;  // Third number
 
-    int a,b,c;
+    // Initialize variables
+    a = 0;
+    b = 0;
+    c = 0;
+
+    // Prompt user for input
     printf ("Introduce el primer numero entero: ");
-    scanf ("%d", &a);
+    scanf ("%ld", &a);
     printf ("Introduce el segundo numero entero: ");
-    scanf ("%d", &b);
+    scanf ("%ld", &b);
     printf ("Introduce el tercer numero entero: ");
-    scanf ("%d", &c);
+    scanf ("%ld", &c);
 
-    if (a>b && a>c){
-        printf ("%d es mayor a %d y a %d", a,b,c);
-    } else if (b>a && b>c){
-        printf ("%d es mayor a %d y a %d", b,a,c);
-    } else {
-        printf ("%d es mayor a %d y a %d", c,b,a);
+    // Determine the greatest number
+    // We use >= to correctly handle cases where numbers are equal
+    if (a > b && a > c)
+    {
+        printf ("%ld es mayor a %ld y a %ld\n", a, b, c);
+    } 
+    else if (b > a && b > c)
+    {
+        printf ("%ld es mayor a %ld y a %ld\n", b, a, c);
+    } 
+    else if (b == a && b > c)
+    {
+        printf ("%ld es igual a %ld y es mayor a %ld\n", b, a, c);
+    }
+    else if (c == a && c > b)
+    {
+        printf ("%ld es igual a %ld y es mayor a %ld\n", c, a, b);
+    }
+    else if (c == b && c > a)
+    {
+        printf ("%ld es igual a %ld y es mayor a %ld\n", c, b, a);
+    }
+    else if (c == a && c == b)
+    {
+        printf ("Todos son iguales, no hay uno mayor a otro\n");
+    }
+    else 
+    {
+        printf ("%ld es mayor a %ld y a %ld\n", c, b, a);
     }
 
-    return 0;
+    return (0);
 }

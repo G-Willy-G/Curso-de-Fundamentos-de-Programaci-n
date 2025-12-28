@@ -1,33 +1,43 @@
 #include <stdio.h>
 #include <math.h>
-#define SIZE_VECTOR 3
 
-int main ()
+#define SIZE_VECTOR 3 // Constant for vector size
+
+int main(void)
 {
-    int vector1[SIZE_VECTOR], vector2[SIZE_VECTOR], vector3[SIZE_VECTOR];
-    double norma_euclidia;
+    // Define vectors with long integer type
+    long    vector_1[SIZE_VECTOR];
+    long    vector_2[SIZE_VECTOR];
+    long    vector_suma[SIZE_VECTOR];
+    double  norma_euclidia; // Variable to store the Euclidean norm
 
-    printf ("Enter the first component of the first vector: ");
-    scanf ("%d", &vector1[0]);
-    printf ("Enter the second component of the first vector: ");
-    scanf ("%d", &vector1[1]);
-    printf ("Enter the third component of the first vector: ");
-    scanf ("%d", &vector1[2]);
+    // Prompt user for the first vector components
+    printf ("Introduce el primer componente del primer vector: ");
+    scanf ("%ld", &vector_1[0]);
+    printf ("Introduce el segundo componente del primer vector: ");
+    scanf ("%ld", &vector_1[1]);
+    printf ("Introduce el tercer componente del primer vector: ");
+    scanf ("%ld", &vector_1[2]);
 
-    printf ("Enter the first component of the second vector: ");
-    scanf ("%d", &vector2[0]);
-    printf ("Enter the second component of the second vector: ");
-    scanf ("%d", &vector2[1]);
-    printf ("Enter the third component of the second vector: ");
-    scanf ("%d", &vector2[2]);
+    // Prompt user for the second vector components
+    printf ("Introduce el primer componente del segundo vector: ");
+    scanf ("%ld", &vector_2[0]);
+    printf ("Introduce el segundo componente del segundo vector: ");
+    scanf ("%ld", &vector_2[1]);
+    printf ("Introduce el tercer componente del segundo vector: ");
+    scanf ("%ld", &vector_2[2]);
 
-    vector3[0] = vector1[0]+vector2[0];
-    vector3[1] = vector1[1]+vector2[1];
-    vector3[2] = vector1[2]+vector2[2];
+    // Calculate sum of vectors component by component
+    vector_suma[0] = vector_1[0] + vector_2[0];
+    vector_suma[1] = vector_1[1] + vector_2[1];
+    vector_suma[2] = vector_1[2] + vector_2[2];
 
-    norma_euclidia= sqrt(pow(vector3[0],2)+pow(vector3[1],2)+ pow(vector3[2],2));
-    printf ("The sum vector is: %d %d %d\n", vector3[0],vector3[1],vector3[2]);
+    // Calculate the Euclidean norm (sqrt(x^2 + y^2 + z^2))
+    norma_euclidia = sqrt(pow(vector_suma[0], 2) + pow(vector_suma[1], 2) + pow(vector_suma[2], 2));
+    
+    // Output the resulting sum vector and its norm
+    printf ("The sum vector is: %ld %ld %ld\n", vector_suma[0], vector_suma[1], vector_suma[2]);
     printf ("Su norma euclidea es: %lf", norma_euclidia);
 
-    return 0;
+    return (0);
 }

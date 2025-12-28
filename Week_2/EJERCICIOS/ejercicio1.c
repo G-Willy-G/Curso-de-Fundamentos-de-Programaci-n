@@ -1,13 +1,17 @@
 #include <stdio.h>
-int main ()
+
+int main(void)
 {
-    int age, condicion;
+    long    edad;
+    short   condicion;
+
+    edad = 0;
+    condicion = 0;
 
     printf ("Introduce tu Edad: ");
-    scanf ("%d", &age);
-    
-    condicion = ((age >= 18) && (age%3)!=0);
-    printf ("La variable es : %d\n", condicion);
+    scanf ("%ld", &edad);
 
-    return 0;
+    condicion = ((edad >= 18) && (edad%3)!=0);
+    printf ("La variable es : %hd\n", condicion);
+    return (0);
 }

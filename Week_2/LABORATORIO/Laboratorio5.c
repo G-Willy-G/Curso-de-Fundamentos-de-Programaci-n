@@ -2,85 +2,60 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* constantes sin punto y coma */
-#define MAX_LONGITUD_NOMBRE 50
-#define TAMANO_PERSONAS 2
+// Define constants to avoid "magic numbers" in the code.
+// This makes the code easier to maintain and understand.
+#define MAX_LONGITUD_NOMBRE 50  // Maximum number of characters for a person's name
+#define PERSONAS 2              // Total number of people to process
 
+// Structure 'Persona' to hold information for a single individual.
 typedef struct {
-    char nombre[MAX_LONGITUD_NOMBRE];
-    long edad;
+    char    nombre[MAX_LONGITUD_NOMBRE]; // Character array to store the name
+    long    edad;                        // Long integer to store the age
 } Persona;
 
+// Structure 'Personas' to group multiple people and store statistical data (average).
 typedef struct {
-    Persona personas[TAMANO_PERSONAS];
-    double media_edades;
+    Persona persona[PERSONAS]; // Array of 'Persona' structures (size defined by PERSONAS)
+    double  media_edades;      // Double precision variable to store the average age
 } Personas;
 
-/* Lee nombres (con espacios) y edades con validación sencilla. */
-void recoleccion_edades(Personas *p) {
-    char buf[128];
-    for (int i = 0; i < TAMANO_PERSONAS; i++) {
-        /* Nombre: usar fgets para aceptar espacios */
-        while (1) {
-            printf("Introduzca el Nombre de la persona %d: ", i + 1);
-            if (!fgets(p->personas[i].nombre, MAX_LONGITUD_NOMBRE, stdin)) {
-                fprintf(stderr, "Error leyendo nombre.\n");
-                exit(EXIT_FAILURE);
-            }
-            /* eliminar salto de línea si existe */
-            size_t len = strlen(p->personas[i].nombre);
-            if (len > 0 && p->personas[i].nombre[len - 1] == '\n')
-                p->personas[i].nombre[len - 1] = '\0';
-            if (p->personas[i].nombre[0] == '\0') {
-                fprintf(stderr, "Nombre vacío, introduce un nombre válido.\n");
-                continue;
-            }
-            break;
-        }
+int main(void) 
+{
+    // Declare a variable 'personas' of type 'Personas' structure
+    Personas personas;
 
-        /* Edad: leer línea y convertir con strtol para validar */
-        while (1) {
-            printf("Introduzca la Edad de %s: ", p->personas[i].nombre);
-            if (!fgets(buf, sizeof buf, stdin)) {
-                fprintf(stderr, "Error leyendo edad.\n");
-                exit(EXIT_FAILURE);
-            }
-            char *endptr;
-            long edad = strtol(buf, &endptr, 10);
-            /* endptr apunta al primer carácter no numérico */
-            if (endptr == buf || (*endptr != '\n' && *endptr != '\0')) {
-                fprintf(stderr, "Edad inválida, introduce un número entero.\n");
-                continue;
-            }
-            if (edad < 0 || edad > 150) {
-                fprintf(stderr, "Edad fuera de rango (0-150).\n");
-                continue;
-            }
-            p->personas[i].edad = edad;
-            break;
-        }
-    }
-}
+    // --- Input for the First Person ---
+    printf("Introduce el nombre de la primera persona: ");
+    // Read the name from standard input and store it in the first element (index 0)
+    scanf("%s", personas.persona[0].nombre);
+    
+    printf("Introduce la edad de la primera persona: ");
+    // Read the age from standard input. Note the '&' operator to get the address of the variable.
+    scanf("%ld", &personas.persona[0].edad);
+    
+    // --- Input for the Second Person ---
+    printf("Introduce el nombre de la segunda persona: ");
+    // Read the name and store it in the second element (index 1)
+    scanf("%s", personas.persona[1].nombre);
+    
+    printf("Introduce la edad de la segunda persona: ");
+    // Read the age for the second person
+    scanf("%ld", &personas.persona[1].edad);
+    
+    // --- Output the Data ---
+    // Print the name and age for both people to verify the input
+    printf("%s tiene %ld años y %s tiene %ld años\n", 
+            personas.persona[0].nombre, personas.persona[0].edad, 
+            personas.persona[1].nombre, personas.persona[1].edad);
 
-/* Calcula la media de edades (double) e imprime el resultado. */
-void calcular_media_edades(Personas *p) {
-    long suma = 0;
-    for (int i = 0; i < TAMANO_PERSONAS; i++) suma += p->personas[i].edad;
-    p->media_edades = (double)suma / (double)TAMANO_PERSONAS;
-    printf("La media de edades es de %.2f\n", p->media_edades);
-}
+    // --- Calculate Average Age ---
+    // Calculate the sum of ages and divide by PERSONAS.
+    // Casting PERSONAS to (double) is crucial here to ensure floating-point division.
+    // Without the cast, integer division would occur, truncating the decimal part.
+    personas.media_edades = (personas.persona[0].edad + personas.persona[1].edad) / (double)PERSONAS;
+    
+    // Print the calculated average age, formatted to 2 decimal places
+    printf("La media de las edades es: %.f\n", personas.media_edades);
 
-int main(void) {
-    Personas actividad = {0};
-
-    recoleccion_edades(&actividad);
-    calcular_media_edades(&actividad);
-
-    /* opción: listar personas y edades */
-    printf("\nPersonas introducidas:\n");
-    for (int i = 0; i < TAMANO_PERSONAS; i++) {
-        printf("%d) %s — %ld años\n", i + 1, actividad.personas[i].nombre, actividad.personas[i].edad);
-    }
-
-    return 0;
+    return (0); // Return 0 to indicate the program finished successfully
 }

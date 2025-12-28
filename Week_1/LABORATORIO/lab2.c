@@ -1,18 +1,24 @@
 #include <stdio.h>
-int main(){
 
-    double height=0, weight=0;
-    double age=0;
-    char initials;
+int main(void)
+{
+    char    inicial[2];
+    double    altura[2];
 
-    printf ("Please enter the height in cm: ");
-    scanf ("%lf", &height);
-    printf ("Please enter the age in years: ");
-    scanf ("%lf", &age);
-    printf ("Finally, enter the initial of the name: ");
-    scanf ("\n%c", &initials);
-    weight = height - 100 + ((9 * age)/100);
-    printf ("The ideal weight of %c, who measures %.1lf cm and is %.lf years old, is %.3lf kg.", initials, height, age, weight);
+    printf("Introduce la inicial del nombre de la primera persona: ");
+    scanf("%s", &inicial[0]);
 
-    return 0;
+    printf("Introduce la altura de la primera persona: ");
+    scanf("%lf", &altura[0]);
+
+    printf("Introduce la inicial del nombre de la segunda persona: ");
+    scanf("%s", &inicial[1]);
+
+    printf("Introduce la altura de la segunda persona: ");
+    scanf("%lf", &altura[1]);
+
+    printf ("El peso ideal de %c es de %.1lf kg\n", inicial[0], (altura[0] - 100 - (altura[0] - 150) / 4));
+    printf ("El peso ideal de %c es de %.1lf kg\n", inicial[1], (altura[1] - 100 - (altura[1] - 150) / 4));
+    printf ("La media de peso entre los dos es %.1lf kg\n", ((altura[0] - 100 - (altura[0] - 150) / 4) + (altura[1] - 100 - (altura[1] - 150) / 4)) / 2);
+    return (0);
 }

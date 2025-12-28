@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NUM_MAX_NOTAS 1000
+
+int main(void)
+{
+    FILE *fichero = NULL;
+    double grades[NUM_MAX_NOTAS];
+    double mean = 0;
+    int i = 0;
+
+    if (!(fichero = fopen ("list.txt", "r")))
+    {
+        printf ("Error al abrir el archivo\n");
+        return 1;
+    }
+
+    for (i = 0; fscanf (fichero, "%*s %lf %*s", &grades[i]) == 1; i++)
+    {
+        mean = mean + grades[i];
+    }
+    fclose (fichero);
+    if (!(fichero = fopen ("list.txt", "a")))
+    {
+        printf ("Error al abrir el archivo\n");
+        return 1;
+    }
+    fprintf (fichero, "La media de la clase es: %.3lf\n", mean / i);
+    fclose (fichero);
+    return 0;
+}
