@@ -1,10 +1,14 @@
 #include <stdio.h>
 
-int main () 
+int main(void) 
 {
 
-    int one, two, *uno, *dos;
-    double mean, *media;
+    int     one;
+    int     two;
+    int     *uno;
+    int     *dos;
+    double  mean;
+    double  *media;
 
     uno = &one;
     dos = &two;
@@ -20,9 +24,9 @@ int main ()
 
     printf ("uno = &one = %p\n", uno);
     printf ("dos = &two = %p\n", dos);
-    printf ("*uno = uno = %d\n", *uno);
-    printf ("*dos = dos = %d\n", *dos);
+    printf ("*uno = one = %d\n", *uno);
+    printf ("*dos = two = %d\n", *dos);
     printf ("*media = mean = %g\n", *media);
 
-    return 0;
+    return (0);
 }
