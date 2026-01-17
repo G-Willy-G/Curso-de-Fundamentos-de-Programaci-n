@@ -6,27 +6,30 @@
 int main(void)
 {
     FILE *fichero = NULL;
-    double grades[NUM_MAX_NOTAS];
-    double mean = 0;
-    int i = 0;
+
+    double  grades[NUM_MAX_NOTAS];
+    double  mean = 0;
+    size_t  i = 0;
 
     if (!(fichero = fopen ("list.txt", "r")))
     {
-        printf ("Error al abrir el archivo\n");
-        return 1;
+        fprintf (stderr, "Error al abrir el archivo\n");
+        return (1);
     }
 
     for (i = 0; fscanf (fichero, "%*s %lf %*s", &grades[i]) == 1; i++)
     {
-        mean = mean + grades[i];
+        mean += grades[i];
     }
+
     fclose (fichero);
+
     if (!(fichero = fopen ("list.txt", "a")))
     {
-        printf ("Error al abrir el archivo\n");
-        return 1;
+        fprintf (stderr, "Error al abrir el archivo\n");
+        return (1);
     }
     fprintf (fichero, "La media de la clase es: %.3lf\n", mean / i);
     fclose (fichero);
-    return 0;
+    return (0);
 }

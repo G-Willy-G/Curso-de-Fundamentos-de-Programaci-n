@@ -40,13 +40,13 @@ int main(void)
 /* Función para contar palabras */
 int count_words(char *filename)
 {
-    FILE *fichero;
-    char temp[MAX_WORD];
-    int counter = 0;
+    FILE    *fichero;
+    char    temp[MAX_WORD];
+    int     counter = 0;
 
     /* Intentar abrir el archivo */
-    fichero = fopen(filename, "r");
-    if (fichero == NULL) {
+    
+    if (!(fichero = fopen(filename, "r"))) {
         return -1; /* Retornar -1 en error */
     }
 
@@ -56,7 +56,7 @@ int count_words(char *filename)
     }
 
     fclose(fichero); /* Importante: cerrar el archivo */
-    return counter;
+    return (counter);
 }
 
 /* Función para contar caracteres específicos */
@@ -68,13 +68,16 @@ int count_characters(char *filename, char ch)
 
     /* Intentar abrir el archivo */
     fichero = fopen(filename, "r");
-    if (fichero == NULL) {
+    if (fichero == NULL)
+    {
         return -1; /* Retornar -1 en error */
     }
 
     /* Leer carácter por carácter hasta el final (EOF) */
-    while ((current_char = fgetc(fichero)) != EOF) {
-        if (current_char == ch) {
+    while ((current_char = fgetc(fichero)) != EOF)
+    {
+        if (current_char == ch) 
+        {
             counter++;
         }
     }

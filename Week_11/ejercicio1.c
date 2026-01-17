@@ -13,7 +13,7 @@ int main(void)
         printf ("Error abriendo el archivo\n");
         return 1;
     }
-    
+
     while (fscanf (imput, "%s %*d %*d %*d %*d %lf", dni, &grade) == 2)
     {
         if (grade < 5)
@@ -30,10 +30,11 @@ int main(void)
         }
         else
         {
-            fprintf (output, "%-12s %.3lf   Sobresaliente\n", dni, grade);
+            fprintf (output, "%-12s %.3lf   SOBRESALIENTE\n", dni, grade);
         }
     }
+
     fclose (imput);
     fclose (output);
-    return 0;
+    return (0);
 }

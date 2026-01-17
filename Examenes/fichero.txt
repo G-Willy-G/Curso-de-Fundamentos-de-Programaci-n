@@ -1,0 +1,4 @@
+Alicia 60.10
+Manuel 73.25
+Alex 77.33
+Rosa 79.50

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #define MAX 10
+
 short son_distintos (long numeros[], long i, long numero)
 {
     while (i > 0)
